@@ -1,1 +1,18 @@
-
+@startuml 
+title user case: Notepad
+left to right direction
+skinparam packageStyle rect
+actor user
+package Notepad {
+user -- (edit text)
+user -- (manage text file)
+user -- (copy text)
+(copy text) .> (paste text) : include
+user -- (cut text)
+(cut text) .> (paste text) : include
+user -- (paste text)
+user -- (save text file)
+user -- (save as)
+user -- (exit Notepad)
+}
+@enduml
