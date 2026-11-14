@@ -6,8 +6,10 @@ actor "user" as u
 participant "Notepad" as n
 
 
-u--> n : handleEvent(saveTextfile)
-n --> n: savingFile()
+u-> n : handleEvent(saveTextfile)
+n --> n: savingTextfile()
+u --> n: (user input)
+n -> n : savingTextfile()
 
 
 @enduml

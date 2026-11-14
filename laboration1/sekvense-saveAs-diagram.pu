@@ -1,7 +1,10 @@
 @startuml
 title Save as(analys)
+
 actor "user" as u
 participant "Notepad" as n
-u--> n : handleEvent(saveAsTextfile)
-n-->n : saveAsText
+u--> n : handleEvent(saveTextfileAs)
+n-->n : saveTextAs()
+u--> n: user input
+n-> n : saveTextAs()
 @enduml
