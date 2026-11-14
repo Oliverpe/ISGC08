@@ -5,6 +5,7 @@ skinparam packageStyle rect
 actor user
 package Notepad {
 user -- (edit text)
+user -- (start Notepad)
 user -- (manage text file)
 user -- (copy text)
 (copy text) .> (paste text) : include

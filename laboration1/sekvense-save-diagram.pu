@@ -1,5 +1,13 @@
 @startuml
+
 title Save text file 
 
-user --> click :  
+actor "user" as u
+participant "Notepad" as n
+
+
+u--> n : handleEvent(saveTextfile)
+n --> n: savingFile()
+
+
 @enduml
