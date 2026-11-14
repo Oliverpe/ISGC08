@@ -1,0 +1,7 @@
+@startuml
+title Save as(analys)
+actor "user" as u
+participant "Notepad" as n
+u--> n : handleEvent(saveAsTextfile)
+n-->n : saveAsText
+@enduml
