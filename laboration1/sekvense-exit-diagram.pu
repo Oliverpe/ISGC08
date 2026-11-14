@@ -1,0 +1,8 @@
+@startuml
+title Exit Notepad (analys)
+actor "user" as u
+participant "Notepad" as n
+u->n:handleEvent(exit)
+n->n: closeNotepad()
+destroy n
+@enduml

@@ -1,6 +1,6 @@
 @startuml
 
-title Save text file 
+title Save text file (analys)
 
 actor "user" as u
 participant "Notepad" as n
@@ -9,7 +9,7 @@ participant "Notepad" as n
 u-> n : handleEvent(saveTextfile)
 n --> n: savingTextfile()
 u --> n: (user input)
-n -> n : savingTextfile()
+n -> n : savingTextfile(File)
 
 
 @enduml

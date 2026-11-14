@@ -1,0 +1,9 @@
+@startuml
+title Open text file (analys)
+actor "user" as u
+participant "Notepad" as n
+u-->n:handleEvent(open)
+n-->n:openTextFile()
+u-->n: choose text file
+n-->n:showTextFile(File)
+@enduml
