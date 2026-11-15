@@ -6,9 +6,9 @@ actor "user" as u
 participant "Notepad" as n
 
 
-u-> n : handleEvent(saveTextfile)
-n --> n: savingTextfile()
-u --> n: (user input)
+u--> n : handleEvent(saveTextfile)
+n -> n: savingTextfile()
+u --> n: [user input]
 n -> n : savingTextfile(File)
 
 

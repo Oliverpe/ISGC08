@@ -1,12 +1,13 @@
 @startuml
 
 title Exit Notepad(analys)
-participant "user" as u
+actor "user" as u
 participant "Notepad" as n
 
 
-u->n:handleEvent(exit)
+u-->n:handleEvent(exit)
+n->n: closeTextfile
 n->n: closeNotepad()
-destroy n
+
 
 @enduml

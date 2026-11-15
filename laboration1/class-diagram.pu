@@ -1,6 +1,28 @@
 @startuml 
-title class diagram(analys)
-class ModelNotepad {
+title class diagram(design)
 
+class TextEditor {
+- currentFile:File
+-changesMade: boolean
+-currentText: String
+-fileManager : TextFileManager
+--
++ getTextFile() : String
++ setText(text: String) : void
++ save(): Boolean
++ openTextFile(file: File) : void
 }
+
+class TextFileManager{ 
++ getTextFile(file : File) : String
++ writeToFile(file: File, text)
+}
+
+class View{}
+
+class Controller{}
+
+
+
+
 @enduml

@@ -1,0 +1,15 @@
+@startuml
+title save text file
+actor "user" as u
+participant "view" as v
+participant "controler" as c
+participant "filemanager" as fm
+participant "file" as f
+
+u-->v: choosing to save
+v-->c : handleEvent(saveTextfile)
+c-->fm: File savingTextfile()
+fm-->f: new File()
+c-->v: savingTextfile(File)
+
+@enduml
