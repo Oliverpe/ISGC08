@@ -15,11 +15,11 @@ public class TextEditorView {
 	public TextEditorView() { 
 		jFrame = new JFrame("Text editor!");
 		
-		jcreate = new JButton();
-		jopen = new JButton();
-		jsave = new JButton();
-		jsaveAs = new JButton();
-		jexit = new JButton();
+		jcreate = new JButton("CREATE");
+		jopen = new JButton("OPEN");
+		jsave = new JButton("SAVE");
+		jsaveAs = new JButton("SAVE AS");
+		jexit = new JButton("EXIT");
 		
 		jPanel = new JPanel();
 		jMenu = new JMenu();
