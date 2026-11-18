@@ -1,0 +1,17 @@
+@startuml
+actor "user" as u
+participant "view" as v
+participant "control" as c
+participant "FileManager" as fm
+participant "File" as f
+
+u --> v: user choose to Save as
+v --> c: handleEvent(saveAs)
+c --> fm: save as saveFileAs()
+fm --> f: setTextFileName()
+u --> v: user input file name
+v --> v: getTextFileName()
+c --> fm: Save saveTextFile()
+c --> fm: Exit closeText()¨
+c --> v : closeView(File)
+@enduml

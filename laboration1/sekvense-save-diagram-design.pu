@@ -4,7 +4,7 @@ actor "user" as u
 participant "view" as v
 participant "controler" as c
 participant "filemanager" as fm
-participant "file" as f
+participant "File" as f
 
 u-->v: choosing to save
 v-->c : handleEvent(saveTextfile)

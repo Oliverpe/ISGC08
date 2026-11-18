@@ -2,8 +2,8 @@
 title Open text file (analys)
 actor "user" as u
 participant "Notepad" as n
-u-->n:handleEvent(open)
-n->n:openTextFile()
-u-->n: [user input]
-n->n:getTextFile(File)
+u --> n :handleEvent(open)
+n -> n : openTextFile()
+n -> n: readTextFile()
+
 @enduml

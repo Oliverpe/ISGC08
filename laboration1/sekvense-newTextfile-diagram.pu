@@ -2,8 +2,7 @@
 title New text file(analys)
 actor "user" as u
 participant "Notepad" as n
-u-->n : handleEvent(new textfile)
-n->n: creatNewTextfile()
-u-->n : [user input]
-n->n : creatNewTextfile(File)
+u--> n: handleEvent(create)
+n-> n : createNewTextFile()
+n--> u : Show empty textfile
 @enduml

@@ -3,8 +3,10 @@ title Save as(analys)
 
 actor "user" as u
 participant "Notepad" as n
-u--> n : handleEvent(saveTextfileAs)
-n->n : saveTextAs()
-u--> n: user input
-n-> n : saveTextAs(File)
+u--> n : handleEvent(saveAs)
+n -> n : setTextFileName()
+u--> n : .[user input]
+n -> n : getTextFileName()
+
+
 @enduml

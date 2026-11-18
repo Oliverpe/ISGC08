@@ -6,8 +6,9 @@ participant "Notepad" as n
 
 
 u-->n:handleEvent(exit)
-n->n: closeTextfile
-n->n: closeNotepad()
+n->n: closeTextfile()
+
+
 
 
 @enduml

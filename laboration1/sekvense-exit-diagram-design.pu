@@ -1,0 +1,15 @@
+@startuml
+actor "user" as u
+participant "view" as v
+participant "control" as c
+participant "FileManager" as fm
+participant "File" as f
+u --> v: choose to exit
+v --> c: handleEvent(exit)
+c --> fm: Save saveTextFile()
+fm --> f: readTextFile
+c --> f: closeText()
+c --> v: closeView(File)
+
+
+@enduml

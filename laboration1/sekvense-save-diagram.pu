@@ -4,12 +4,8 @@ title Save text file (analys)
 
 actor "user" as u
 participant "Notepad" as n
-
-
-u--> n : handleEvent(saveTextfile)
-n -> n: savingTextfile()
-u --> n: [user input]
-n -> n : savingTextfile(File)
-
-
+u --> n : handleEvent(save)
+n -> n : readTextFile()
+n -> n : saveTextFile()
+n -> n : viewCurrent()
 @enduml

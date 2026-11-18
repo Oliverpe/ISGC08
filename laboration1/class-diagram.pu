@@ -1,28 +1,77 @@
 @startuml 
 title class diagram(design)
 
-class TextEditor {
-- currentFile:File
--changesMade: boolean
--currentText: String
--fileManager : TextFileManager
+class File {
+- textFileName : String
+- filePath : String
+- fileContent : String
 --
-+ getTextFile() : String
-+ setText(text: String) : void
-+ save(): Boolean
-+ openTextFile(file: File) : void
++ File()
++ readFile(): File
++ newTextFile(): File
++ readTextFile(): String
++ setTextFileName(textFileName : String): void
++ getTextFileName(): String
++ getName(): String
++ getFileContent(): String
++ setFileContent(fileContent: String): void
+}
+	
+class TextFileManager{
+- currentFile : File
++ openTextFile():File
++ createNewTextFile(): File
++ SaveTextFile(file: File): boolean
++ saveTextFile(): boolean
++ closeTextFile(): File
++ saveFileAs(): void
 }
 
-class TextFileManager{ 
-+ getTextFile(file : File) : String
-+ writeToFile(file: File, text)
+
+
+
+
+class View{ 
+- controller: Controller
+- currentFile: File
+--
++ chooseOpen(): void
++ chooseCreate(): void
++ chooseExit(): void
++ chooseSave(): void
++ chooseSaveAs(): void
++ inputFileName(): String
++ viewCurrent(file: File): void
++ closeView(file: File): void
++ savingTextFile(file: File): void
+
+
 }
 
-class View{}
+class Controller{ 
+- textFileManager : TextFileManager
+--
++ handleEvent(event: Event): void
++ createFile(): void
++ openFile(): void
++ exitTexteditor(): void
++ saveFile():void
++ saveFileAs(textFileName : String): void
+}
 
-class Controller{}
+enum Event {
+OPEN
+CREATE
+EXIT
+SAVE
+SAVE_AS
+}
 
 
+Controller --> "1" TextFileManager
+TextFileManager "1" -->  File
+Controller --> File
+Controller --> "1" View
 
 
 @enduml

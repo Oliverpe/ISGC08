@@ -1,0 +1,14 @@
+@startuml
+actor "user" as u
+participant "view" as v
+participant "control" as c
+participant "FileManager" as fm
+participant "File" as f
+u --> v:user choose to create text file
+v --> c: handleEvent(create)
+c --> fm: createNewTextFile()
+fm --> f: newTextFile()
+c --> fm: Open openTextFile()
+c --> fm: Save saveTextFile()
+c --> v: viewCurrent(File)
+@enduml

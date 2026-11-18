@@ -8,12 +8,11 @@ user -- (edit text)
 user -- (start Notepad)
 user -- (open text file)
 user -- (copy text)
-(copy text) .> (paste text) : include
 user -- (cut text)
-(cut text) .> (paste text) : include
 user -- (paste text)
-user -- (save text file)
+user -- (save)
 user -- (save as)
+(save) .> (save as) :include
 user -- (exit Notepad)
 }
 @enduml
