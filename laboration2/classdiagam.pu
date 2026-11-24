@@ -1,0 +1,175 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "java.awt.event" {
+  interface ActionListener <<interface>>
+  class ActionEvent
+}
+
+package view {
+  class CopyListener {
+    - view : TextEditorView
+    + CopyListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class CreateListener {
+    - view : TextEditorView
+    + CreateListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class CutListener {
+    - view : TextEditorView
+    + CutListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class ExitListener {
+    - view : TextEditorView
+    + ExitListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class OpenListener {
+    - view : TextEditorView
+    + OpenListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class PasteListener {
+    - view : TextEditorView
+    + PasteListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class SaveAsListener {
+    - view : TextEditorView
+    + SaveAsListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class SaveListener {
+    - view : TextEditorView
+    + SaveListener(TextEditorView txtView)
+    + actionPerformed(ActionEvent e)
+  }
+
+  class TextEditorView {
+    - jFrame : JFrame
+    - jMenu : JMenu
+    - jMenu2 : JMenu
+    - create : JMenuItem
+    - open : JMenuItem
+    - save : JMenuItem
+    - saveAs : JMenuItem
+    - exit : JMenuItem
+    - copy : JMenuItem
+    - paste : JMenuItem
+    - cut : JMenuItem
+    - jTextArea : JTextArea
+    - jMenuBar : JMenuBar
+    - jsPanel : JScrollPane
+    - conTxteditor : ControlTextEditor
+
+    + TextEditorView(ControlTextEditor conTxteditor)
+    + show()
+    + chooseExit()
+    + chooseCreate()
+    + chooseOpen()
+    + chooseSave()
+    + chooseSaveAs()
+    + chooseCopy()
+    + choosePaste()
+    + chooseCut()
+    + getText() : String
+    + setText(String txt)
+  }
+}
+
+package control {
+  class ControlTextEditor {
+    - txtView : TextEditorView
+    - fm : FileManager
+
+    + ControlTextEditor()
+    + handleEvent(int event)
+    + run()
+    - saveAs()
+    - save()
+    - open()
+    - create()
+    - exit()
+    {static} + main(String[] args)
+  }
+}
+
+package model {
+  class FileManager {
+    - currentFile : TextEditoreData
+
+    + FileManager()
+    + openTextFile(File selectedFile) : TextEditoreData
+    + createTextFile(String textFileName)
+    + saveFile(String textFileName, String fileContent)
+    + writeTextFile(String filePath, String fileContent)
+    + saveFileAs(String fileContent, String filePath)
+    + getCurrentFile() : TextEditoreData
+  }
+
+  class TextEditoreData {
+    - textFileName : String
+    - filePath : String
+    - fileContent : String
+    - changed : boolean
+
+    + readTextFile() : String
+    + getTextFileName() : String
+    + setTextFileName(String textFileName)
+    + getFilePath() : String
+    + setFilePath(String filePath)
+    + getFileContent() : String
+    + setFileContent(String fileContent)
+    + isChanged() : boolean
+    + setChanged(boolean changed)
+  }
+}
+
+' Listener-implementeringar
+CopyListener ..|> ActionListener
+CreateListener ..|> ActionListener
+CutListener ..|> ActionListener
+ExitListener ..|> ActionListener
+OpenListener ..|> ActionListener
+PasteListener ..|> ActionListener
+SaveAsListener ..|> ActionListener
+SaveListener ..|> ActionListener
+
+' Listener -> View
+CopyListener --> TextEditorView : view
+CreateListener --> TextEditorView : view
+CutListener --> TextEditorView : view
+ExitListener --> TextEditorView : view
+OpenListener --> TextEditorView : view
+PasteListener --> TextEditorView : view
+SaveAsListener --> TextEditorView : view
+SaveListener --> TextEditorView : view
+
+' View skapar/kopplar lyssnare
+TextEditorView ..> CopyListener : creates
+TextEditorView ..> CreateListener : creates
+TextEditorView ..> CutListener : creates
+TextEditorView ..> ExitListener : creates
+TextEditorView ..> OpenListener : creates
+TextEditorView ..> PasteListener : creates
+TextEditorView ..> SaveAsListener : creates
+TextEditorView ..> SaveListener : creates
+
+' Kontroll och modell
+TextEditorView --> ControlTextEditor : conTxteditor
+ControlTextEditor --> TextEditorView : txtView
+ControlTextEditor --> FileManager : fm
+ControlTextEditor ..> TextEditoreData : uses
+FileManager *-- TextEditoreData : currentFile
+
+@enduml
