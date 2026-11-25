@@ -59,15 +59,13 @@ public class FileManager {
 
 	}
 
-	public void writeTextFile(String filePath, String fileContent) {
+	public void writeTextFile(String filePath, String fileContent) throws IOException {
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
 			bw.write(fileContent);
-		} catch(IOException e) {
-			System.out.println("Error when trying to write.");
 		}
 	}
 
-	public void saveFileAs(String fileContent, String filePath) {
+	public void saveFileAs(String fileContent, String filePath) throws IOException{
 		currentFile.setFileContent(fileContent);
 		currentFile.setFilePath(filePath);
 		writeTextFile(filePath, fileContent);

@@ -76,7 +76,14 @@ public class TextEditorView {
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		jFrame.setSize(700, 500);
 		jFrame.setLocationRelativeTo(null);
-
+		
+		changesHandler();
+		jFrame.addWindowListener(new WindowAdapter() { 
+			@Override
+			private void windowClosing(WindowEvent e) { 
+				windowHandler();
+			}
+		});
 
 	}
 
@@ -111,7 +118,7 @@ public class TextEditorView {
 		}
 	}
 	
-	public void changesHandler() { 
+	private void changesHandler() { 
 		DocumentListener list = new DocumentListener() {
 
 			@Override
@@ -169,14 +176,11 @@ public class TextEditorView {
 	
 	public void windowHandler() { 
 		chooseExit();
-		}
+		
+		
+	}
 	
-	jFrame.addWindowListener(new WindowAdapter() { 
-		@Override
-		public void windowClosing(WindowEvent e) { 
-			windowHandler();
-		}
-	});
+	
 
 
 
